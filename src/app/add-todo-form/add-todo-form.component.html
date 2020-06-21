@@ -1,0 +1,28 @@
+<form [formGroup]="formGroup" (submit)="onSubmit()" class="add-todo-form">
+
+  <mat-form-field>
+    <mat-label>Название задачи</mat-label>
+    <input matInput placeholder="Название задачи..." id="todo" formControlName="todo">
+    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    <mat-error *ngIf="isControlInvalid('todo')">
+      Название задачи <strong>обязательно</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Категория</mat-label>
+    <mat-select id="project" formControlName="project" (selectionChange)="projectSelectionChange($event)">
+      <mat-option *ngFor="let project of projects" [value]="project.value">
+        {{project.text}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="isControlInvalid('project')">
+      Категория <strong>обязательна</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-button mat-dialog-close>Отмена</button>
+    <button type="submit" mat-button cdkFocusInitial>Ок</button>
+  </div>
+</form>

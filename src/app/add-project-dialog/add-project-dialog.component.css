@@ -1,0 +1,24 @@
+.dialog {
+  width: 300px;
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons button {
+  flex-grow: 1;
+}
+
+.buttons button:first-child {
+  margin-right: 10px;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+}

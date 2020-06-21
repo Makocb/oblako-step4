@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <span class="fill-remaining-space">
+    Задачи
+  </span>
+
+  <button mat-icon-button color="primary" (click)="addClick()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="card-container">
+  <mat-card *ngFor="let project of projectsService?.projects" class="project-card">
+    <mat-card-header>
+      <mat-card-title>{{project.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-checkboxes">
+        <div *ngFor="let todo of project?.todos" class="todo">
+          <mat-checkbox 
+            [checked]="todo.isCompleted" 
+            [id]="project.id + '_' + todo.id" 
+            [ngClass]="{ 'line-through': todo.isCompleted }"
+            (change)="itemChange($event)" >
+              {{todo.text}}
+          </mat-checkbox>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
